@@ -1,7 +1,7 @@
-version: "3.9"
+name: clash
 services:
   clash:
-    image: docker.cr.20220625.xyz/dreamacro/clash:latest
+    image: ${REGISTRY:-docker.io}/dreamacro/clash:latest
     ports:
       - "9870:7890"
       - "9090:9090"
