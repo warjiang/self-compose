@@ -32,8 +32,9 @@ services:
     volumes:
       - opensearch-data:/usr/share/opensearch/data
       - ./opensearch/config/opensearch.yml:/usr/share/opensearch/config/opensearch.yml
+      - ./opensearch/init:/usr/share/opensearch/init:ro
       - ./ik-config/IKAnalyzer.cfg.xml:/usr/share/opensearch/plugins/ik/config/IKAnalyzer.cfg.xml
-      - ./plugins:/tmp/plugins:ro
+      - ./plugins:/usr/share/opensearch/plugins-local:ro
     ports:
       - 9200:9200
       - 9600:9600 # Performance Analyzer
@@ -41,16 +42,6 @@ services:
       - opensearch-net
     depends_on:
       - dict-server
-    command: |
-      sh -c "
-        if [ ! -d /usr/share/opensearch/plugins/ik ]; then
-          echo 'Installing IK plugin from local file...'
-          /usr/share/opensearch/bin/opensearch-plugin install --batch file:///tmp/plugins/opensearch-analysis-ik-3.2.0.zip
-        else
-          echo 'IK plugin already installed.'
-        fi
-        /usr/local/bin/docker-entrypoint.sh
-      "
 
   # 3. OpenSearch Dashboards
   opensearch-dashboards:
