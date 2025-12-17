@@ -1,15 +1,27 @@
 # version: '3'
 services:
-  opensearch-node1:
+  # 1. 词典服务器 (用于热更新)
+  dict-server:
+    image: ${REGISTRY:-docker.io}/python:3.9-alpine
+    container_name: dict-server
+    volumes:
+      - ./dict-server:/dict:ro
+    working_dir: /dict
+    command: ["python", "-m", "http.server", "8000"]
+    networks:
+      - opensearch-net
+
+  # 2. OpenSearch 主服务 (离线安装插件)
+  opensearch:
     image: ${REGISTRY:-docker.io}/opensearchproject/opensearch:3.2.0 # 使用最新稳定版
-    container_name: opensearch-node1
+    container_name: opensearch
     environment:
       - cluster.name=opensearch-cluster
       - node.name=opensearch-node1
-      - discovery.type=single-node # 关键：单节点模式
+      - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # 根据你的机器内存调整
-      - plugins.security.disabled=false # 启用安全插件（推荐）
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      - plugins.security.disabled=true
     ulimits:
       memlock:
         soft: -1
@@ -18,28 +30,34 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - opensearch-data1:/usr/share/opensearch/data
+      - opensearch-data:/usr/share/opensearch/data
+      - ./opensearch/config/opensearch.yml:/usr/share/opensearch/config/opensearch.yml
+      - ./opensearch/init:/usr/share/opensearch/init:ro
+      - ./plugins:/usr/share/opensearch/plugins-local:ro
     ports:
-      - 9200:9200 # REST API
+      - 9200:9200
       - 9600:9600 # Performance Analyzer
     networks:
       - opensearch-net
+    depends_on:
+      - dict-server
 
+  # 3. OpenSearch Dashboards
   opensearch-dashboards:
     image: ${REGISTRY:-docker.io}/opensearchproject/opensearch-dashboards:3.2.0
     container_name: opensearch-dashboards
     ports:
       - 5601:5601
     environment:
-      - 'OPENSEARCH_HOSTS=["https://opensearch-node1:9200"]'
-      - "OPENSEARCH_SECURITY_AUTHENTICATION_TYPE=basicauth"
+      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
     networks:
       - opensearch-net
     depends_on:
-      - opensearch-node1
+      - opensearch
 
 volumes:
-  opensearch-data1:
+  opensearch-data:
 
 networks:
   opensearch-net:
