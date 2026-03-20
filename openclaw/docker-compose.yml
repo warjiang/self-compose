@@ -222,6 +222,7 @@ services:
       - "8080:8080"
     restart: unless-stopped
     profiles:
+      - addon
       - minimal
       - all
 
@@ -238,6 +239,7 @@ services:
       - openclaw
     restart: unless-stopped
     profiles:
+      - addon
       - all
 
 volumes:
