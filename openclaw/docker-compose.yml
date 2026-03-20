@@ -2,9 +2,9 @@ x-openclaw-common-env: &openclaw-common-env
   TZ: Asia/Shanghai
   HOME: /home/node
   TERM: xterm-256color
-  # 配置同步开关
+  # Config sync toggle
   SYNC_OPENCLAW_CONFIG: ${SYNC_OPENCLAW_CONFIG}
-  # 模型配置
+  # Model config
   SYNC_MODEL_CONFIG: ${SYNC_MODEL_CONFIG}
   MODEL_ID: ${MODEL_ID}
   PRIMARY_MODEL: ${PRIMARY_MODEL}
@@ -14,7 +14,7 @@ x-openclaw-common-env: &openclaw-common-env
   API_PROTOCOL: ${API_PROTOCOL}
   CONTEXT_WINDOW: ${CONTEXT_WINDOW}
   MAX_TOKENS: ${MAX_TOKENS}
-  # 提供商 2 (可选)
+  # Provider 2 (optional)
   # MODEL2_NAME: ${MODEL2_NAME}
   # MODEL2_MODEL_ID: ${MODEL2_MODEL_ID}
   # MODEL2_BASE_URL: ${MODEL2_BASE_URL}
@@ -22,7 +22,7 @@ x-openclaw-common-env: &openclaw-common-env
   # MODEL2_PROTOCOL: ${MODEL2_PROTOCOL}
   # MODEL2_CONTEXT_WINDOW: ${MODEL2_CONTEXT_WINDOW}
   # MODEL2_MAX_TOKENS: ${MODEL2_MAX_TOKENS}
-  # 提供商 3 (可选)
+  # Provider 3 (optional)
   # MODEL3_NAME: ${MODEL3_NAME}
   # MODEL3_MODEL_ID: ${MODEL3_MODEL_ID}
   # MODEL3_BASE_URL: ${MODEL3_BASE_URL}
@@ -30,7 +30,7 @@ x-openclaw-common-env: &openclaw-common-env
   # MODEL3_PROTOCOL: ${MODEL3_PROTOCOL}
   # MODEL3_CONTEXT_WINDOW: ${MODEL3_CONTEXT_WINDOW}
   # MODEL3_MAX_TOKENS: ${MODEL3_MAX_TOKENS}
-  # 提供商 4 (可选)
+  # Provider 4 (optional)
   # MODEL4_NAME: ${MODEL4_NAME}
   # MODEL4_MODEL_ID: ${MODEL4_MODEL_ID}
   # MODEL4_BASE_URL: ${MODEL4_BASE_URL}
@@ -38,7 +38,7 @@ x-openclaw-common-env: &openclaw-common-env
   # MODEL4_PROTOCOL: ${MODEL4_PROTOCOL}
   # MODEL4_CONTEXT_WINDOW: ${MODEL4_CONTEXT_WINDOW}
   # MODEL4_MAX_TOKENS: ${MODEL4_MAX_TOKENS}
-  # 提供商 5 (可选)
+  # Provider 5 (optional)
   # MODEL5_NAME: ${MODEL5_NAME}
   # MODEL5_MODEL_ID: ${MODEL5_MODEL_ID}
   # MODEL5_BASE_URL: ${MODEL5_BASE_URL}
@@ -46,7 +46,7 @@ x-openclaw-common-env: &openclaw-common-env
   # MODEL5_PROTOCOL: ${MODEL5_PROTOCOL}
   # MODEL5_CONTEXT_WINDOW: ${MODEL5_CONTEXT_WINDOW}
   # MODEL5_MAX_TOKENS: ${MODEL5_MAX_TOKENS}
-  # 提供商 6 (可选)
+  # Provider 6 (optional)
   # MODEL6_NAME: ${MODEL6_NAME}
   # MODEL6_MODEL_ID: ${MODEL6_MODEL_ID}
   # MODEL6_BASE_URL: ${MODEL6_BASE_URL}
@@ -54,16 +54,16 @@ x-openclaw-common-env: &openclaw-common-env
   # MODEL6_PROTOCOL: ${MODEL6_PROTOCOL}
   # MODEL6_CONTEXT_WINDOW: ${MODEL6_CONTEXT_WINDOW}
   # MODEL6_MAX_TOKENS: ${MODEL6_MAX_TOKENS}
-  # 通道配置
+  # Channel config
   DM_POLICY: ${DM_POLICY}
   GROUP_POLICY: ${GROUP_POLICY}
   ALLOW_FROM: ${ALLOW_FROM}
-  # 电报机器人配置
+  # Telegram bot config
   TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
   TELEGRAM_DM_POLICY: ${TELEGRAM_DM_POLICY}
   TELEGRAM_ALLOW_FROM: ${TELEGRAM_ALLOW_FROM}
   TELEGRAM_GROUP_POLICY: ${TELEGRAM_GROUP_POLICY}
-  # 飞书机器人配置
+  # Feishu (Lark) bot config
   FEISHU_DEFAULT_ACCOUNT: ${FEISHU_DEFAULT_ACCOUNT}
   FEISHU_APP_ID: ${FEISHU_APP_ID}
   FEISHU_APP_SECRET: ${FEISHU_APP_SECRET}
@@ -71,20 +71,20 @@ x-openclaw-common-env: &openclaw-common-env
   FEISHU_REPLY_MODE: ${FEISHU_REPLY_MODE}
   FEISHU_THREAD_SESSION: ${FEISHU_THREAD_SESSION}
   FEISHU_DOMAIN: ${FEISHU_DOMAIN}
-  # 飞书机器人多账号 JSON
+  # Feishu multi-account JSON
   FEISHU_ACCOUNTS_JSON: ${FEISHU_ACCOUNTS_JSON}
   FEISHU_GROUPS_JSON: ${FEISHU_GROUPS_JSON}
   FEISHU_DM_POLICY: ${FEISHU_DM_POLICY}
   FEISHU_ALLOW_FROM: ${FEISHU_ALLOW_FROM}
   FEISHU_GROUP_POLICY: ${FEISHU_GROUP_POLICY}
   FEISHU_GROUP_ALLOW_FROM: ${FEISHU_GROUP_ALLOW_FROM}
-  # 飞书机器人插件配置
+  # Feishu bot plugin config
   FEISHU_OFFICIAL_PLUGIN_ENABLED: ${FEISHU_OFFICIAL_PLUGIN_ENABLED}
   FEISHU_STREAMING: ${FEISHU_STREAMING}
   FEISHU_FOOTER_ELAPSED: ${FEISHU_FOOTER_ELAPSED}
   FEISHU_FOOTER_STATUS: ${FEISHU_FOOTER_STATUS}
   FEISHU_REQUIRE_MENTION: ${FEISHU_REQUIRE_MENTION}
-  # 钉钉配置
+  # Dingtalk config
   # DINGTALK_CLIENT_ID: ${DINGTALK_CLIENT_ID}
   # DINGTALK_CLIENT_SECRET: ${DINGTALK_CLIENT_SECRET}
   # DINGTALK_ROBOT_CODE: ${DINGTALK_ROBOT_CODE}
@@ -103,24 +103,24 @@ x-openclaw-common-env: &openclaw-common-env
   # DINGTALK_THINKING_MESSAGE: ${DINGTALK_THINKING_MESSAGE}
   # DINGTALK_ASYNC_MODE: ${DINGTALK_ASYNC_MODE}
   # DINGTALK_ASYNC_ACK_TEXT: ${DINGTALK_ASYNC_ACK_TEXT}
-  # 钉钉多机器人 JSON
+  # Dingtalk multi-bot JSON
   # DINGTALK_ACCOUNTS_JSON: ${DINGTALK_ACCOUNTS_JSON}
-  # QQ 机器人配置
+  # QQ bot config
   # QQBOT_APP_ID: ${QQBOT_APP_ID}
   # QQBOT_CLIENT_SECRET: ${QQBOT_CLIENT_SECRET}
   # QQBOT_DM_POLICY: ${QQBOT_DM_POLICY}
   # QQBOT_ALLOW_FROM: ${QQBOT_ALLOW_FROM}
   # QQBOT_GROUP_POLICY: ${QQBOT_GROUP_POLICY}
-  # QQ 机器人多账号 JSON
+  # QQ bot multi-account JSON
   # QQBOT_BOTS_JSON: ${QQBOT_BOTS_JSON}
-  # 企业微信配置
+  # WeCom (Enterprise WeChat) config
   # WECOM_DEFAULT_ACCOUNT: ${WECOM_DEFAULT_ACCOUNT}
   # WECOM_ADMIN_USERS: ${WECOM_ADMIN_USERS}
   # WECOM_COMMANDS_ENABLED: ${WECOM_COMMANDS_ENABLED}
   # WECOM_COMMANDS_ALLOWLIST: ${WECOM_COMMANDS_ALLOWLIST}
   # WECOM_DYNAMIC_AGENTS_ENABLED: ${WECOM_DYNAMIC_AGENTS_ENABLED}
   # WECOM_DYNAMIC_AGENTS_ADMIN_BYPASS: ${WECOM_DYNAMIC_AGENTS_ADMIN_BYPASS}
-  # 企业微信单账号快捷配置（会写入 defaultAccount 指定的账号）
+  # WeCom single-account shortcut config (will be written to defaultAccount)
   # WECOM_BOT_ID: ${WECOM_BOT_ID}
   # WECOM_SECRET: ${WECOM_SECRET}
   # WECOM_WELCOME_MESSAGE: ${WECOM_WELCOME_MESSAGE}
@@ -140,9 +140,9 @@ x-openclaw-common-env: &openclaw-common-env
   # WECOM_GROUP_CHAT_MENTION_PATTERNS: ${WECOM_GROUP_CHAT_MENTION_PATTERNS}
   # WECOM_NETWORK_EGRESS_PROXY_URL: ${WECOM_NETWORK_EGRESS_PROXY_URL}
   # WECOM_NETWORK_API_BASE_URL: ${WECOM_NETWORK_API_BASE_URL}
-  # 企业微信多账号 JSON
+  # WeCom multi-account JSON
   WECOM_ACCOUNTS_JSON: ${WECOM_ACCOUNTS_JSON}
-  # NAPCAT 配置
+  # NAPCAT config
   NAPCAT_REVERSE_WS_PORT: ${NAPCAT_REVERSE_WS_PORT}
   NAPCAT_DM_POLICY: ${NAPCAT_DM_POLICY}
   NAPCAT_ALLOW_FROM: ${NAPCAT_ALLOW_FROM}
@@ -150,9 +150,9 @@ x-openclaw-common-env: &openclaw-common-env
   NAPCAT_HTTP_URL: ${NAPCAT_HTTP_URL}
   NAPCAT_ACCESS_TOKEN: ${NAPCAT_ACCESS_TOKEN}
   NAPCAT_ADMINS: ${NAPCAT_ADMINS}
-  # 工作空间配置
+  # Workspace config
   WORKSPACE: ${WORKSPACE}
-  # Gateway 配置
+  # Gateway config
   OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}
   OPENCLAW_GATEWAY_BIND: ${OPENCLAW_GATEWAY_BIND}
   OPENCLAW_GATEWAY_PORT: ${OPENCLAW_GATEWAY_PORT}
@@ -162,9 +162,9 @@ x-openclaw-common-env: &openclaw-common-env
   OPENCLAW_GATEWAY_ALLOW_INSECURE_AUTH: ${OPENCLAW_GATEWAY_ALLOW_INSECURE_AUTH}
   OPENCLAW_GATEWAY_DANGEROUSLY_DISABLE_DEVICE_AUTH: ${OPENCLAW_GATEWAY_DANGEROUSLY_DISABLE_DEVICE_AUTH}
   OPENCLAW_GATEWAY_AUTH_MODE: ${OPENCLAW_GATEWAY_AUTH_MODE}
-  # 插件控制
+  # Plugin control
   OPENCLAW_PLUGINS_ENABLED: ${OPENCLAW_PLUGINS_ENABLED}
-  # 工具配置
+  # Tools config
   OPENCLAW_TOOLS_JSON: ${OPENCLAW_TOOLS_JSON}
 
 services:
@@ -176,19 +176,21 @@ services:
       - SETUID
       - SETGID
       - DAC_OVERRIDE
-    # 可选：指定容器运行 UID:GID（例如 1000:1000）
-    # 默认保持 root 启动，以便 init.sh 自动修复挂载卷权限后再降权运行网关
+    # Optional: specify UID:GID for container (e.g. 1000:1000)
+    # Defaults to root for init.sh to fix mounted volume permissions before dropping privileges
     user: ${OPENCLAW_RUN_USER:-0:0}
     environment: *openclaw-common-env
     volumes:
       - ${OPENCLAW_DATA_DIR}:/home/node/.openclaw
-      # 使用命名卷共享 extensions，确保工具容器安装后的插件主容器可见
+      # Use named volume to share extensions, ensuring tools container installed plugins are visible to main container
       - openclaw-extensions:/home/node/.openclaw/extensions
     ports:
       - "${OPENCLAW_GATEWAY_PORT}:18789"
       - "${OPENCLAW_BRIDGE_PORT}:18790"
     init: true
     restart: unless-stopped
+    networks:
+      - openclaw
 
   openclaw-installer:
     container_name: openclaw-installer
@@ -207,5 +209,30 @@ services:
     stdin_open: true
     tty: true
 
+  all-in-one-sandbox:
+    container_name: all-in-one-sandbox
+    image: enterprise-public-cn-beijing.cr.volces.com/vefaas-public/all-in-one-sandbox:latest
+    security_opt:
+      - seccomp=unconfined
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  clash:
+    container_name: clash
+    image: ${REGISTRY:-docker.io}/dreamacro/clash:latest
+    ports:
+      - "7890:7890"
+      - "9090:9090"
+    volumes:
+      - ./clash-config:/root/.config/clash:rw
+      - ./clash-ui:/ui
+    networks:
+      - openclaw
+    restart: unless-stopped
+
 volumes:
   openclaw-extensions:
+
+networks:
+  openclaw:
