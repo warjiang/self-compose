@@ -59,10 +59,10 @@ x-openclaw-common-env: &openclaw-common-env
   GROUP_POLICY: ${GROUP_POLICY}
   ALLOW_FROM: ${ALLOW_FROM}
   # Telegram bot config
-  TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
-  TELEGRAM_DM_POLICY: ${TELEGRAM_DM_POLICY}
-  TELEGRAM_ALLOW_FROM: ${TELEGRAM_ALLOW_FROM}
-  TELEGRAM_GROUP_POLICY: ${TELEGRAM_GROUP_POLICY}
+  # TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+  # TELEGRAM_DM_POLICY: ${TELEGRAM_DM_POLICY}
+  # TELEGRAM_ALLOW_FROM: ${TELEGRAM_ALLOW_FROM}
+  # TELEGRAM_GROUP_POLICY: ${TELEGRAM_GROUP_POLICY}
   # Feishu (Lark) bot config
   FEISHU_DEFAULT_ACCOUNT: ${FEISHU_DEFAULT_ACCOUNT}
   FEISHU_APP_ID: ${FEISHU_APP_ID}
@@ -143,13 +143,13 @@ x-openclaw-common-env: &openclaw-common-env
   # WeCom multi-account JSON
   WECOM_ACCOUNTS_JSON: ${WECOM_ACCOUNTS_JSON}
   # NAPCAT config
-  NAPCAT_REVERSE_WS_PORT: ${NAPCAT_REVERSE_WS_PORT}
-  NAPCAT_DM_POLICY: ${NAPCAT_DM_POLICY}
-  NAPCAT_ALLOW_FROM: ${NAPCAT_ALLOW_FROM}
-  NAPCAT_GROUP_POLICY: ${NAPCAT_GROUP_POLICY}
-  NAPCAT_HTTP_URL: ${NAPCAT_HTTP_URL}
-  NAPCAT_ACCESS_TOKEN: ${NAPCAT_ACCESS_TOKEN}
-  NAPCAT_ADMINS: ${NAPCAT_ADMINS}
+  # NAPCAT_REVERSE_WS_PORT: ${NAPCAT_REVERSE_WS_PORT}
+  # NAPCAT_DM_POLICY: ${NAPCAT_DM_POLICY}
+  # NAPCAT_ALLOW_FROM: ${NAPCAT_ALLOW_FROM}
+  # NAPCAT_GROUP_POLICY: ${NAPCAT_GROUP_POLICY}
+  # NAPCAT_HTTP_URL: ${NAPCAT_HTTP_URL}
+  # NAPCAT_ACCESS_TOKEN: ${NAPCAT_ACCESS_TOKEN}
+  # NAPCAT_ADMINS: ${NAPCAT_ADMINS}
   # Workspace config
   WORKSPACE: ${WORKSPACE}
   # Gateway config
@@ -171,6 +171,10 @@ services:
   openclaw-gateway:
     container_name: openclaw-gateway
     image: ${OPENCLAW_IMAGE}
+    profiles:
+      - core
+      - minimal
+      - all
     cap_add:
       - CHOWN
       - SETUID
@@ -217,6 +221,10 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
+    profiles:
+      - addon
+      - minimal
+      - all
 
   clash:
     container_name: clash
@@ -230,6 +238,9 @@ services:
     networks:
       - openclaw
     restart: unless-stopped
+    profiles:
+      - addon
+      - all
 
 volumes:
   openclaw-extensions:
