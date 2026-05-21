@@ -1,0 +1,21 @@
+name: gitlab
+
+services:
+  gitlab:
+    image: ${GITLAB_IMAGE:-docker.io/gitlab/gitlab-ce:19.0.0-ce.0}
+    container_name: gitlab
+    restart: always
+    hostname: "${GITLAB_HOSTNAME:-gitlab.example.com}"
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url '${GITLAB_EXTERNAL_URL:-http://gitlab.example.com:8929}'
+        gitlab_rails['gitlab_shell_ssh_port'] = ${GITLAB_SSH_PORT:-2424}
+    ports:
+      - "${GITLAB_HTTP_PORT:-8929}:${GITLAB_HTTP_PORT:-8929}"
+      - "${GITLAB_HTTPS_PORT:-2443}:443"
+      - "${GITLAB_SSH_PORT:-2424}:22"
+    volumes:
+      - "${GITLAB_HOME:-./data}/config:/etc/gitlab"
+      - "${GITLAB_HOME:-./data}/logs:/var/log/gitlab"
+      - "${GITLAB_HOME:-./data}/data:/var/opt/gitlab"
+    shm_size: "256m"
