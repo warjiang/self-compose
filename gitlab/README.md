@@ -4,7 +4,7 @@
 
 ## 目录内容
 
-- `docker-compose.yml`: GitLab CE 单容器编排文件（固定稳定版 tag，可通过变量调整）。
+- `docker-compose.yml`: GitLab CE 单容器编排文件（镜像地址完全可自定义）。
 - `.env.example`: 默认变量模板（高位端口 + 占位域名）。
 
 ## 前置条件
@@ -24,6 +24,7 @@
    cp .env.example .env
    ```
 3. 编辑 `.env`，至少修改以下配置：
+   - `GITLAB_IMAGE`（可替换为你的私有仓库完整镜像地址）
    - `GITLAB_HOSTNAME`
    - `GITLAB_EXTERNAL_URL`
    - `GITLAB_HOME`（建议使用绝对路径）
@@ -67,6 +68,14 @@ GITLAB_SSH_PORT=2424
 说明：
 - `GITLAB_EXTERNAL_URL` 必须和你实际访问地址完全一致（包括端口）。
 - 如果使用 SSH clone，地址会使用 `GITLAB_SSH_PORT`（默认 `2424`）。
+
+## 自定义镜像示例
+
+`GITLAB_IMAGE` 支持完整镜像地址（仓库 + 镜像名 + tag）。例如：
+
+```env
+GITLAB_IMAGE=crpi-a01fov5fxhl285uu.cn-shanghai.personal.cr.aliyuncs.com/warjiang/gitlab-gitlab-ce:19.0.0-ce.0
+```
 
 ## 常用命令
 

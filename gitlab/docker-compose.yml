@@ -2,7 +2,7 @@ name: gitlab
 
 services:
   gitlab:
-    image: ${REGISTRY:-docker.io}/gitlab/gitlab-ce:${GITLAB_IMAGE_TAG:-19.0.0-ce.0}
+    image: ${GITLAB_IMAGE:-docker.io/gitlab/gitlab-ce:19.0.0-ce.0}
     container_name: gitlab
     restart: always
     hostname: "${GITLAB_HOSTNAME:-gitlab.example.com}"
